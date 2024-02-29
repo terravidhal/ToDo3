@@ -1,0 +1,67 @@
+//1-
+Explication: 
+
+    Définition de la fonction : 
+        rBinarySearch(arr, target, startIndex, endIndex)prend :
+            arr: Le tableau trié à rechercher.
+            target: La valeur à rechercher.
+            startIndex(facultatif) : l'index de départ de la recherche (par défaut : 0).
+            endIndex(facultatif) : l'index de fin de la recherche (par défaut, le dernier index).
+
+    Cas de base : 
+        Si startIndexdevient supérieur à endIndex, cela signifie que l'espace de recherche est vide et que la cible n'est pas trouvée (retour false).
+
+    Calculer l'indice médian : 
+        Il calcule l'indice médian en utilisant (startIndex + endIndex) / 2.
+
+    Vérifiez la cible à l'index du milieu : 
+        Si l'élément au midIndexest égal à target, cela signifie que la cible est trouvée (retour true).
+
+    Recherche récursive : 
+        Si la targetest inférieur à l'élément au midIndex:
+            Appeler récursivement rBinarySearchsur la moitié gauche du tableau, mise à jour startIndexet endIndex.
+        Si la targetest supérieur à l'élément au midIndex:
+            Appeler récursivement rBinarySearchsur la moitié droite du tableau, mise à jour startIndexet endIndex.
+
+
+//2-
+a-
+Explication: 
+
+    Définition de la fonction : 
+        rGCF(num1, num2)prend deux entiers num1et num2comme entrée.
+
+    Cas de base : 
+        Si num1et num2sont égaux, le GCF est num1(retour num1).
+        Si soit num1ou num2est 0, le GCF est 0 (retour 0).
+
+    Cas récursifs : 
+        Cas 2 : Si num1est supérieur à num2, appliquez l'algorithme euclidien :
+            Appeler récursivement rGCFavec num1 - num2et num2. Cela utilise le fait que le GCF de aet best aussi le GCF de a - bet b.
+        Cas 3 : Si num2est supérieur à num1, appliquez l'algorithme euclidien avec des arguments échangés :
+            Appeler récursivement rGCFavec num1et num2 - num1. Cela exploite la symétrie du GCF, où le GCF de aet best le même que le GCF de bet a.
+
+
+b-
+Explication: 
+
+    Cas de base combinés : 
+        Le code combine les cas de base précédents pour 0 et des nombres égaux en une seule vérification, simplifiant ainsi la logique.
+
+    Valeurs absolues : 
+        Il utilise Math.absconvertir les deux num1et num2à leurs valeurs absolues. Cela garantit que la boucle itère toujours dans la bonne direction, quels que soient les signes des nombres d'origine.
+
+    Approche itérative : 
+        Au lieu de la récursivité, le code utilise une approche itérative avec un whileboucle. Cela réduit la consommation de la pile et permet de gérer des nombres plus importants qui pourraient entraîner des problèmes de débordement de pile avec une récursion profonde.
+        La boucle implémente le principe de base de l'algorithme euclidien, calculant à plusieurs reprises le reste lorsque le plus grand nombre est divisé par le plus petit nombre.
+        À chaque itération, les rôles de num1et num2sont échangés et le reste devient le nouveau num2.
+
+    GCF après la boucle : 
+        Une fois la boucle terminée, la valeur finale de num1représente le GCF, car il contient le plus grand facteur commun des nombres d'origine.
+
+Avantages: 
+
+    Cette approche révisée améliore l'efficacité du rGCFfonctionner par :
+        Réduire la consommation de la pile grâce à l'itération.
+        Activation du calcul de GCF pour des nombres plus grands susceptibles de provoquer un débordement de pile avec une récursion profonde.
+    Il maintient l'exactitude du calcul GCF en suivant les mêmes principes que l'implémentation récursive.
